@@ -1,0 +1,19 @@
+meta {
+  name: Create User
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/ybook/user/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username":"Marlene",
+    "password":"432432",
+    "UserEnum":"EMPLOYEE"
+  }
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Update User
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/ybook/user/userupdate/{id}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username":"Grazy",
+    "password":"1234",
+    "userEnum":"EMPLOYEE"
+  }
+}

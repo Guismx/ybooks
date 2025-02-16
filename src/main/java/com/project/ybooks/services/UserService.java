@@ -19,7 +19,7 @@ public class UserService {
         return "User created with succesfully";
     }
 
-    public String uptadeUser (User user, Long id) {
+    public String updateUser (User user, Long id) {
         user.setId(id);
         this.userRepository.save(user);
         return "User update with sucessfully";
@@ -32,6 +32,10 @@ public class UserService {
 
     public List<User> allUsers() {
         return this.userRepository.findAll();
+    }
+
+    public User userById(Long id) {
+        return this.userRepository.findById(id).orElse(null);
     }
 
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("ybook/user")
 public class UserController {
 
     @Autowired
@@ -27,18 +27,18 @@ public class UserController {
         }
     }
 
-    @PutMapping("/userupdate")
-    public ResponseEntity<String> updateUser (@RequestBody User user, Long id) {
+    @PutMapping("/userupdate/{id}")
+    public ResponseEntity<String> updateUser (@RequestBody User user, @PathVariable Long id) {
         try {
-            String responseMessage = userService.uptadeUser(user, id);
-            return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
+            String responseMessage = userService.updateUser(user, id);
+            return new ResponseEntity<>(responseMessage, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error updating user", HttpStatus.BAD_REQUEST);
         }
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteUser (Long id) {
+    public ResponseEntity<String> deleteUser (@PathVariable Long id) {
         try {
             String responseMessage = this.userService.deleteUser(id);
             return new ResponseEntity<>(responseMessage, HttpStatus.OK);
@@ -53,7 +53,21 @@ public class UserController {
             List<User> lista = this.userService.allUsers();
             return new ResponseEntity<>(lista, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/finduser/{id}")
+    public ResponseEntity<User> userById (@PathVariable Long id) {
+        try {
+            User responseUser = this.userService.userById(id);
+            if (responseUser == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Retorna 404 se o usuário não existir
+            }
+            return new ResponseEntity<>(responseUser, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }
