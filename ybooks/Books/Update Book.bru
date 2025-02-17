@@ -1,0 +1,22 @@
+meta {
+  name: Update Book
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8080/ybook/book/update/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "title": "Clean Code Archteture",
+      "author": "Robert C. Martin",
+      "year": 2008,
+      "publisher": 1,
+      "createdBy": 101
+  }
+  
+}
