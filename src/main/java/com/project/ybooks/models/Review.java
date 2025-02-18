@@ -1,4 +1,4 @@
-package com.project.ybooks.services;
+package com.project.ybooks.models;
 
 import jakarta.persistence.*;
 
@@ -12,7 +12,7 @@ public class Review {
 
     private int bookId;
     private int userId;
-    private String rating;
+    private int rating;
     private String comment;
 
     public Long getId() {
@@ -39,11 +39,11 @@ public class Review {
         this.userId = userId;
     }
 
-    public String getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 
