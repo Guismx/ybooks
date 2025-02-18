@@ -14,9 +14,9 @@ public class Loan {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long bookId;
-    private Long userId;
-    private Date loanData;
+    private int bookId;
+    private int userId;
+    private Date loanDate;
     private Date returnDate;
 
     public Long getId() {
@@ -27,28 +27,28 @@ public class Loan {
         this.id = id;
     }
 
-    public Long getBookId() {
+    public int getBookId() {
         return bookId;
     }
 
-    public void setBookId(Long bookId) {
+    public void setBookId(int bookId) {
         this.bookId = bookId;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
     public Date getLoanData() {
-        return loanData;
+        return loanDate;
     }
 
     public void setLoanData(Date loanData) {
-        this.loanData = loanData;
+        this.loanDate = loanData;
     }
 
     public Date getReturnDate() {

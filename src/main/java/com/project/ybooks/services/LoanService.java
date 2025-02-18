@@ -6,6 +6,7 @@ import com.project.ybooks.repositories.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,6 +16,7 @@ public class LoanService {
     LoanRepository loanRepository;
 
     public String makeLoan (Loan loan) {
+        loan.setLoanData(new Date());
         this.loanRepository.save(loan);
         return "Loan created with successfully";
     }
