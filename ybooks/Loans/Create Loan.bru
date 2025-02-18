@@ -6,6 +6,15 @@ meta {
 
 post {
   url: http://localhost:8080/ybook/loans/save
-  body: none
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "bookId": 2,
+    "userId": 1,
+    "loanDate": "2025-02-18",
+    "returnDate": "2025-03-13"
+  }
 }
