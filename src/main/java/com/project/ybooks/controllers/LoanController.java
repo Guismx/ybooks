@@ -23,7 +23,7 @@ public class LoanController {
             String returnLoan = loanService.makeLoan(loan);
             return new ResponseEntity<>(returnLoan, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>("Error creting loan", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error creating loan", HttpStatus.BAD_REQUEST);
         }
     }
 

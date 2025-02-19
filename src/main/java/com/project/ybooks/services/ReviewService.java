@@ -17,4 +17,10 @@ public class ReviewService {
         this.reviewRepository.save(review);
         return "Review send!";
     }
+
+    public String updateReview (Review review, Long id) {
+        review.setId(id);
+        this.reviewRepository.save(review);
+        return "Review update carried out successfully";
+    }
 }

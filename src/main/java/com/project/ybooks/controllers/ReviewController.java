@@ -22,4 +22,13 @@ public class ReviewController {
         }
     }
 
+    @PutMapping("/update/{id}")
+    public String updateReview (@RequestBody Review review, @PathVariable Long id) {
+        try {
+            return this.reviewService.updateReview(review, id);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

@@ -1,11 +1,11 @@
 meta {
-  name: Create Review
+  name: Update Review
   type: http
-  seq: 1
+  seq: 2
 }
 
-post {
-  url: http://localhost:8080/ybook/review/save
+put {
+  url: http://localhost:8080/ybook/review/update/1
   body: json
   auth: none
 }
@@ -15,6 +15,6 @@ body:json {
     "bookId": 1,
     "userId": 1,
     "rating": 5,
-    "comment": "This is a bad book"
+    "comment": "This is a good book"
   }
 }
