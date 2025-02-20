@@ -1,9 +1,10 @@
 package com.project.ybooks.controllers;
 
 import com.project.ybooks.models.Review;
-import com.project.ybooks.repositories.ReviewRepository;
 import com.project.ybooks.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,20 +15,22 @@ public class ReviewController {
     ReviewService reviewService;
 
     @PostMapping("/save")
-    public String makeReview (@RequestBody Review review) {
+    public ResponseEntity<String> makeReview (@RequestBody Review review) {
         try {
-            return this.reviewService.makeReview(review);
+            String returnMessage = this.reviewService.makeReview(review);
+            return new ResponseEntity<>(returnMessage, HttpStatus.CREATED);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @PutMapping("/update/{id}")
-    public String updateReview (@RequestBody Review review, @PathVariable Long id) {
+    public ResponseEntity<String> updateReview (@RequestBody Review review, @PathVariable Long id) {
         try {
-            return this.reviewService.updateReview(review, id);
+            String returnMessage = this.reviewService.updateReview(review, id);
+            return new ResponseEntity<>(returnMessage, HttpStatus.OK);
         } catch (Exception e) {
-            return null;
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
