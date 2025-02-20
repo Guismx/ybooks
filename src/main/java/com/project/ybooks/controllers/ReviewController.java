@@ -34,4 +34,14 @@ public class ReviewController {
         }
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Review> deleteReview (@PathVariable Long id) {
+        try {
+            Review deletedReview =this.reviewService.deleteReview(id);
+            return new ResponseEntity<>(deletedReview, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
