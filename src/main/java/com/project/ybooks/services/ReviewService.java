@@ -6,6 +6,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -34,4 +35,7 @@ public class ReviewService {
         return review;
     }
 
+    public List<Review> findAll () {
+        return this.reviewRepository.findAll();
+    }
 }
