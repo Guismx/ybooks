@@ -36,4 +36,8 @@ public class BookService {
     public Book bookById(Long id) {
         return this.bookRepository.findById(id).orElse(null);
     }
+
+    public List<Book> findByCategory (String category) {
+       return bookRepository.findByCategory(category);
+    }
 }

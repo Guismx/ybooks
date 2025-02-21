@@ -15,6 +15,7 @@ public class Book {
     private int year;
     private int publisher;
     private int createdBy;
+    private String category;
 
     public long getId() {
         return id;
@@ -62,5 +63,13 @@ public class Book {
 
     public void setCreatedBy(int createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

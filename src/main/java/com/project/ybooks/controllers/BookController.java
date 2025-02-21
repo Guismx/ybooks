@@ -58,7 +58,7 @@ public class BookController {
         }
     }
 
-    @GetMapping("/findBook/{id}")
+    @GetMapping("/findbook/{id}")
     public ResponseEntity<Book> bookById(@PathVariable Long id) {
         try {
             Book book = bookService.bookById(id);
@@ -70,4 +70,18 @@ public class BookController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/findbycategory/{category}")
+    public ResponseEntity<List<Book>> findByCategory (@PathVariable String category) {
+        try {
+            List<Book> list = bookService.findByCategory(category);
+            if (list.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            return ResponseEntity.ok(list);
+        } catch (Exception e ) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }
