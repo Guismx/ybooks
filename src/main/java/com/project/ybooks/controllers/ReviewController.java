@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("ybook/review")
 public class ReviewController {
@@ -40,7 +42,17 @@ public class ReviewController {
             Review deletedReview =this.reviewService.deleteReview(id);
             return new ResponseEntity<>(deletedReview, HttpStatus.OK);
         } catch (RuntimeException e) {
-            throw new RuntimeException(e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/listAll")
+    public ResponseEntity<List<Review>> findAll() {
+        try {
+            List<Review> list = this.reviewService.findAll();
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
