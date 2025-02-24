@@ -14,8 +14,13 @@ public class Loan {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int bookId;
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
     private Date loanDate;
     private Date returnDate;
 
@@ -25,22 +30,6 @@ public class Loan {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public Date getLoanData() {

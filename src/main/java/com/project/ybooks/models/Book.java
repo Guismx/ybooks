@@ -16,6 +16,15 @@ public class Book {
     private int publisher;
     private int createdBy;
     private String category;
+    private int quantity;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public long getId() {
         return id;
