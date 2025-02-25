@@ -2,12 +2,11 @@ package com.project.ybooks.models;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Data
 @Table(name = "UserActions")
 public class UserAction {
 
@@ -18,7 +17,7 @@ public class UserAction {
     private Long userId;
     private String actionType;
     private String actionDescription;
-    private Date actionDate;
+    private LocalDateTime actionDate;
 
     public Long getId() {
         return id;
@@ -52,11 +51,11 @@ public class UserAction {
         this.actionDescription = actionDescription;
     }
 
-    public Date getActionDate() {
+    public LocalDateTime getActionDate() {
         return actionDate;
     }
 
-    public void setActionDate(Date actionDate) {
+    public void setActionDate(LocalDateTime actionDate) {
         this.actionDate = actionDate;
     }
 }
