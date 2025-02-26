@@ -16,7 +16,6 @@ public class LoanService {
     LoanRepository loanRepository;
 
     public String makeLoan (Loan loan) {
-        loan.setLoanData(new Date());
         this.loanRepository.save(loan);
         return "Loan created with successfully";
     }
