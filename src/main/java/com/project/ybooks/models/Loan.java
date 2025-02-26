@@ -1,12 +1,16 @@
 package com.project.ybooks.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table (name = "Loan")
 public class Loan {
 
@@ -31,38 +35,5 @@ public class Loan {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public LocalDateTime getLoanDate() {
-        return loanDate;
-    }
-
-    public void setLoanDate(LocalDateTime loanDate) {
-        this.loanDate = loanDate;
-    }
-
-    public LocalDateTime getReturnDate() {
-        return returnDate;
-    }
-
-    public void setReturnDate(LocalDateTime returnDate) {
-        this.returnDate = returnDate;
-    }
-
 
 }

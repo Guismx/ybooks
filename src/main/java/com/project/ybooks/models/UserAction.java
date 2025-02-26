@@ -2,10 +2,18 @@ package com.project.ybooks.models;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "UserActions")
 public class UserAction {
 
@@ -26,35 +34,4 @@ public class UserAction {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getActionType() {
-        return actionType;
-    }
-
-    public void setActionType(String actionType) {
-        this.actionType = actionType;
-    }
-
-    public String getActionDescription() {
-        return actionDescription;
-    }
-
-    public void setActionDescription(String actionDescription) {
-        this.actionDescription = actionDescription;
-    }
-
-    public LocalDateTime getActionDate() {
-        return actionDate;
-    }
-
-    public void setActionDate(LocalDateTime actionDate) {
-        this.actionDate = actionDate;
-    }
 }
