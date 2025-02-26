@@ -23,9 +23,12 @@ public class Book {
     private String author;
     private int year;
     private int publisher;
-    private int createdBy;
     private String category;
     private int quantity;
+
+    @ManyToOne
+    private User createdBy;
+
 
     public long getId() {
         return id;
