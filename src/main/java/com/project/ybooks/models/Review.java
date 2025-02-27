@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -18,8 +20,12 @@ public class Review {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int bookId;
-    private int userId;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "review_books")
+    private List<Book> bookId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private User userId;
     private int rating;
     private String comment;
 

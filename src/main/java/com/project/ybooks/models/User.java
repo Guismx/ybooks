@@ -30,8 +30,18 @@ public class User {
     UserEnum userEnum;
 
     @OneToMany(mappedBy = "createdBy")
-    @JoinColumn(name="book_id")
+    @JoinColumn(name="book_id", nullable = false)
     private List<Book> books;
+
+    // TODO: QUEM ESTA EMPRESTANDO
+    @OneToMany(mappedBy = "borroweduser_id")
+    private List<Loan> borrowdloans;
+
+
+    // TODO: USUARIO QUE ESTA PEGANDO EMPRESTADO
+    @OneToMany(mappedBy = "userlending_id")
+    private List<Loan> userlending;
+
 
 
     public Long getId() {

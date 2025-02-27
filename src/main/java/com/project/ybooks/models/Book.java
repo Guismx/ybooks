@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -26,8 +28,9 @@ public class Book {
     private String category;
     private int quantity;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User createdBy;
+
 
     public long getId() {
         return id;

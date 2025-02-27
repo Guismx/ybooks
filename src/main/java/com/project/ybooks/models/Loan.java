@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Data
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,13 +18,18 @@ public class Loan {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id", nullable = false)
-    private Book book;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name ="books_loans")
+    private List<Book> book;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "borroweduser_id", nullable = false)
+    private User borrowed_user;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userlending_id", nullable = false)
+    private User user_lending;
+
     private LocalDateTime loanDate;
     private LocalDateTime returnDate;
 
