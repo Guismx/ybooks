@@ -1,12 +1,11 @@
 package com.project.ybooks.models;
 
-
 import com.project.ybooks.enums.UserEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -29,6 +28,10 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     UserEnum userEnum;
+
+    @OneToMany(mappedBy = "createdBy")
+    @JoinColumn(name="book_id")
+    private List<Book> books;
 
 
     public Long getId() {

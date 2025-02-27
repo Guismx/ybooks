@@ -29,7 +29,6 @@ public class Book {
     @ManyToOne
     private User createdBy;
 
-
     public long getId() {
         return id;
     }
