@@ -20,14 +20,14 @@ public class Loan {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name ="books_loans")
-    private List<Book> book;
+    private List<Book> books;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "borroweduser_id", nullable = false)
+    @JoinColumn(name = "borrowed_user_id", nullable = false)
     private User borrowed_user;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userlending_id", nullable = false)
+    @JoinColumn(name = "user_lending_id", nullable = false)
     private User user_lending;
 
     private LocalDateTime loanDate;

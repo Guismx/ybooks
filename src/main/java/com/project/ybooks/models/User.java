@@ -34,15 +34,12 @@ public class User {
     private List<Book> books;
 
     // TODO: QUEM ESTA EMPRESTANDO
-    @OneToMany(mappedBy = "borroweduser_id")
+    @OneToMany(mappedBy = "borroweduser_user")
     private List<Loan> borrowdloans;
 
-
     // TODO: USUARIO QUE ESTA PEGANDO EMPRESTADO
-    @OneToMany(mappedBy = "userlending_id")
+    @OneToMany(mappedBy = "user_lending")
     private List<Loan> userlending;
-
-
 
     public Long getId() {
         return id;
