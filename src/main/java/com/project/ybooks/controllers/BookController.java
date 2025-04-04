@@ -24,6 +24,7 @@ public class BookController {
             String responseMessage = bookService.createBook(book);
             return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>("Error creating book", HttpStatus.BAD_REQUEST);
         }
     }

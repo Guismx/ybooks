@@ -1,6 +1,7 @@
 package com.project.ybooks.controllers;
 
 import com.project.ybooks.models.User;
+import com.project.ybooks.repositories.UserRepository;
 import com.project.ybooks.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,9 +51,10 @@ public class UserController {
     @GetMapping("/allusers")
     public ResponseEntity<List<User>> allUsers () {
         try {
-            List<User> lista = this.userService.allUsers();
-            return new ResponseEntity<>(lista, HttpStatus.OK);
+            List<User> users = this.userService.allUsers();
+            return new ResponseEntity<>(users, HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

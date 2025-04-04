@@ -5,18 +5,21 @@ meta {
 }
 
 put {
-  url: http://localhost:8080/ybook/book/update/1
+  url: http://localhost:8080/ybook/book/update/4
   body: json
   auth: none
 }
 
 body:json {
   {
-      "title": "Clean Code Archteture",
+      "title": "Clean Code 2",
       "author": "Robert C. Martin",
-      "year": 2008,
+      "year": 2018,
       "publisher": 1,
-      "createdBy": 101
+      "category": "Programming",
+      "quantity": 5,
+      "createdBy": {
+          "id": 1
+      }
   }
-  
 }

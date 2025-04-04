@@ -21,14 +21,14 @@ public class LoanService {
     }
 
     public String updateLoan (Loan loan, Long id) {
-       loan.setId(id);
+        loan.setId(id);
         this.loanRepository.save(loan);
         return "Loan updated with successfully";
     }
 
     public String deleteLoan (Long id) {
-       this.loanRepository.deleteById(id);
-       return "Loan deleted with successfully";
+        this.loanRepository.deleteById(id);
+        return "Loan deleted with successfully";
     }
 
     public List<Loan> listLoan () {

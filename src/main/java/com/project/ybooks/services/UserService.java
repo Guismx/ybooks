@@ -31,11 +31,11 @@ public class UserService {
     }
 
     public List<User> allUsers() {
+        System.out.println("chegou aqui no Service");
         return this.userRepository.findAll();
     }
 
     public User userById(Long id) {
         return this.userRepository.findById(id).orElse(null);
     }
-
 }

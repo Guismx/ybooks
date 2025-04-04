@@ -1,19 +1,14 @@
 package com.project.ybooks.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.ybooks.enums.UserEnum;
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.util.Date;
 import java.util.List;
 
-@Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@Table (name = "Users")
+@Table(name = "Users")
 public class User {
 
     @Id
@@ -21,25 +16,36 @@ public class User {
     private Long id;
 
     private String nome;
-    private Date data_nascimento;
+    private Date birth_date;
     private String cpf;
     private String username;
     private String password;
 
     @Enumerated(EnumType.STRING)
-    UserEnum userEnum;
+    private UserEnum userEnum;
 
-    @OneToMany(mappedBy = "createdBy")
-    @JoinColumn(name="book_id", nullable = false)
-    private List<Book> books;
+    @OneToMany(mappedBy = "borrowedUser", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Loan> borrowedLoans; // Associado corretamente ao borrowedUser na entidade Loan
 
-    // TODO: QUEM ESTA EMPRESTANDO
-    @OneToMany(mappedBy = "borroweduser_user")
-    private List<Loan> borrowdloans;
+    @OneToMany(mappedBy = "lendingUser", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Loan> userLending; // Associado corretamente ao lendingUser na entidade Loan
 
-    // TODO: USUARIO QUE ESTA PEGANDO EMPRESTADO
-    @OneToMany(mappedBy = "user_lending")
-    private List<Loan> userlending;
+    public User() {
+    }
+
+    public User(Long id, String nome, Date birth_date, String cpf, String username, String password, UserEnum userEnum, List<Loan> borrowedLoans, List<Loan> userLending) {
+        this.id = id;
+        this.nome = nome;
+        this.birth_date = birth_date;
+        this.cpf = cpf;
+        this.username = username;
+        this.password = password;
+        this.userEnum = userEnum;
+        this.borrowedLoans = borrowedLoans;
+        this.userLending = userLending;
+    }
 
     public Long getId() {
         return id;
@@ -47,5 +53,69 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getData_nascimento() {
+        return birth_date;
+    }
+
+    public void setData_nascimento(Date data_nascimento) {
+        this.birth_date = data_nascimento;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserEnum getUserEnum() {
+        return userEnum;
+    }
+
+    public void setUserEnum(UserEnum userEnum) {
+        this.userEnum = userEnum;
+    }
+
+    public List<Loan> getBorrowedLoans() {
+        return borrowedLoans;
+    }
+
+    public void setBorrowedLoans(List<Loan> borrowedLoans) {
+        this.borrowedLoans = borrowedLoans;
+    }
+
+    public List<Loan> getUserLending() {
+        return userLending;
+    }
+
+    public void setUserLending(List<Loan> userLending) {
+        this.userLending = userLending;
     }
 }
