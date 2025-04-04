@@ -5,16 +5,29 @@ meta {
 }
 
 put {
-  url: http://localhost:8080/ybook/loans/update/2
+  url: http://localhost:8080/ybook/loans/update/1
   body: json
   auth: none
 }
 
 body:json {
   {
-    "bookId": 2,
-    "userId": 1,
-    "loanDate": "2025-02-17",
-    "returnDate": "2025-03-13"
+    "loanDate": "2025-04-04T14:30:00",
+    "returnDate": "2025-04-20T14:30:00",
+    "books": [
+      {
+        "id": 2
+      },
+      {
+        "id": 1
+      }
+    ],
+    "borrowedUser": {
+      "id": 1
+    },
+    "lendingUser": {
+      "id": 2
+    }
   }
+  
 }

@@ -23,6 +23,7 @@ public class LoanController {
             String returnLoan = loanService.makeLoan(loan);
             return new ResponseEntity<>(returnLoan, HttpStatus.CREATED);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>("Error creating loan", HttpStatus.BAD_REQUEST);
         }
     }
@@ -33,6 +34,7 @@ public class LoanController {
             String returnUpdate = loanService.updateLoan(loan, id);
             return new ResponseEntity<>(returnUpdate, HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>("Error updating loan", HttpStatus.BAD_REQUEST);
         }
     }

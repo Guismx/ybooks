@@ -12,9 +12,22 @@ post {
 
 body:json {
   {
-    "bookId": 2,
-    "userId": 1,
-    "loanDate": "2025-02-18",
-    "returnDate": "2025-03-13"
+    "loanDate": "2025-04-04T14:30:00",
+    "returnDate": "2025-04-11T14:30:00",
+    "books": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      }
+    ],
+    "borrowedUser": {
+      "id": 2
+    },
+    "lendingUser": {
+      "id": 1
+    }
   }
+  
 }
